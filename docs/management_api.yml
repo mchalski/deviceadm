@@ -161,6 +161,26 @@ paths:
           description: Internal server error.
           schema:
             $ref: "#/definitions/Error"
+    delete:
+      summary: Remove device
+      description: Removes all device data.
+      parameters:
+        - name: id
+          in: path
+          description: Device identifier (SHA256 over identity data).
+          required: true
+          type: string
+      responses:
+        204:
+          description: The device was removed.
+        404:
+         description: The device was not found.
+         schema:
+           $ref: "#/definitions/Error"
+        500:
+          description: Internal server error.
+          schema:
+           $ref: "#/definitions/Error"
   /devices/{id}/status:
     get:
       summary: Check the admission status of a selected device
